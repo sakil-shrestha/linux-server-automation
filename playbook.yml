@@ -1,0 +1,38 @@
+---
+- name: " linux server automatin"
+  hosts: automationserver
+  becomes: yes
+  task:
+
+   - name: " update packages "
+     ansible.builtin.apt:
+      update_cache: yes
+      cache_valid_time: 3600
+
+   - name: "upgrade package"
+     apt:
+        upgrade: dist
+
+   - name: "intallation of packages"
+     ansible.builtin.apt:
+        name: 
+          - git
+          - curl
+          - nginx
+          - htop
+          - unzip
+          - wget
+
+        state: present
+
+   - name: "create users and group "
+   - name: "configure ssh access"
+   - name: "configure UFW"
+   - name: "create directories"
+   - name: "manage ownership and permission"
+   - name: "start and enable services"
+   - name: "configure server timezone"
+   - name: "gather system information"   
+  
+      
+      
