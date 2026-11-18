@@ -36,8 +36,23 @@
        state: present
 
 
-  #  - name: "configure ssh access"
-  #  - name: "configure UFW"
+  #  "configure ssh access"
+   - name: "install  UFW"
+     apt:
+      name: ufw
+      state: present
+
+   - name: "enable ufw firewall"
+     ufw: 
+      state: enabled
+
+   - name: "allow ssh connections"
+     ufw:
+      rule: allow
+      port: '22'
+      proto: tcp
+
+    
   #  - name: "create directories"
   #  - name: "manage ownership and permission"
   #  - name: "start and enable services"
