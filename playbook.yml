@@ -61,17 +61,31 @@
       owner: root 
       mode: '755'
 
-   - name:
+   - name: "create backup directories"
      file:
        path: /opt/devops/backup
        state: directory
        group: root
        owner: root
        mode: '755'
-  #  - name: "manage ownership and permission"
-  #  - name: "start and enable services"
-  #  - name: "configure server timezone"
-  #  - name: "gather system information"   
+
+    # manage linux services
+   - name: "ensure ssh service is running"
+     service:
+      name: ssh
+      state: started
+      enabled: true
+
+   - name: "ensure cron service is running"
+     service: 
+       name: cron
+       state: started
+       enabled: true
+
+   - name: "configure server timezone"
+     timezone:
+       name: Asia/Kathmandu
+      
   
       
       
