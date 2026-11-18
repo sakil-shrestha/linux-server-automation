@@ -52,8 +52,22 @@
       port: '22'
       proto: tcp
 
-    
-  #  - name: "create directories"
+    # manage directories
+   - name: "create devops directories"
+     file:
+      path: /opt/devops
+      state: directory
+      group: root
+      owner: root 
+      mode: '755'
+
+   - name:
+     file:
+       path: /opt/devops/backup
+       state: directory
+       group: root
+       owner: root
+       mode: '755'
   #  - name: "manage ownership and permission"
   #  - name: "start and enable services"
   #  - name: "configure server timezone"
