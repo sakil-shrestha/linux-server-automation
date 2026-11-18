@@ -1,8 +1,8 @@
 ---
-- name: " linux server automatin"
+- name: " linux server automation"
   hosts: automationserver
-  becomes: yes
-  task:
+  become: true
+  tasks:
 
    - name: " update packages "
      ansible.builtin.apt:
@@ -25,14 +25,24 @@
 
         state: present
 
-   - name: "create users and group "
-   - name: "configure ssh access"
-   - name: "configure UFW"
-   - name: "create directories"
-   - name: "manage ownership and permission"
-   - name: "start and enable services"
-   - name: "configure server timezone"
-   - name: "gather system information"   
+   - name: "create users and group"
+     user:
+       name: devops   # name of the user 
+       groups: sudo # group of the user
+       append: true # append the user to the group
+      #  password: "#asfwee303!2fsdfscsd" # set the password for the user in hash
+       create_home: true # this will create the home directory for the user
+       shell: /bin/bash # set the shell
+       state: present
+
+
+  #  - name: "configure ssh access"
+  #  - name: "configure UFW"
+  #  - name: "create directories"
+  #  - name: "manage ownership and permission"
+  #  - name: "start and enable services"
+  #  - name: "configure server timezone"
+  #  - name: "gather system information"   
   
       
       
