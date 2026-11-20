@@ -2,11 +2,14 @@
 - name: " linux server automation"
   hosts: automationserver
   become: true
+  vars_files:
+    - ../group_vars/all.yml
   tasks:
     - name: " create users and group"
       user:
-        name: devops
-        groups: sudo
+        name: "{{item.name}}"
+        groups: "{{item.groups}}"
         create_home: yes
-        shell: /bin/bash
+        shell: "{{item.shell}}"
         state: present
+      loop: "{{admin_users}}"

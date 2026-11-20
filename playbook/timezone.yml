@@ -2,7 +2,9 @@
 - name: "configure timezone"
   hosts: automation
   become: true
+  vars_files:
+    - ../group_vars/all.yml
   tasks: 
    - name: "set to Asia/Katmandu"
      timezone:
-      name: Asia/Kathmandu
+      name: "{{timezone}}"

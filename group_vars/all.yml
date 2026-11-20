@@ -1,0 +1,17 @@
+---
+common_packages:
+  - git
+  - curl
+  - nginx
+  - htop
+  - unzip
+  - wget
+
+admin_users:
+  - name: devops
+    groups: sudo
+    shell: /bin/bash
+
+timezone: Asia/Kathmandu
+
+common_directory: /opt/devops
