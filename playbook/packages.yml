@@ -1,0 +1,25 @@
+---
+- name: "install and update packages"
+  hosts: automation
+  become: true
+  tasks: 
+    - name: " update packages "
+      ansible.builtin.apt:
+        update_cache: yes
+        cache_valid_time: 3600
+
+    - name: "upgrade package"
+      apt:
+        upgrade: dist
+
+    - name: "intallation of packages"
+      ansible.builtin.apt:
+        name: 
+          - git
+          - curl
+          - nginx
+          - htop
+          - unzip
+          - wget
+
+        state: present

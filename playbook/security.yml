@@ -1,0 +1,17 @@
+---
+- name: "configure ufw firewall"
+  hosts: automation
+  become: true
+  tasks: 
+    - name: "install ufw"
+      apt:
+        name: ufw
+        state: present
+    - name: "enable ufw"
+      ufw:
+        state: enabled
+    - name: "allow ssh connection"
+      ufw:
+        rule: allow
+        port: '22'
+        proto: 'tcp'

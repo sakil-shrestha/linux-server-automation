@@ -1,0 +1,8 @@
+---
+- name: "configure timezone"
+  hosts: automation
+  become: true
+  tasks: 
+   - name: "set to Asia/Katmandu"
+     timezone:
+      name: Asia/Kathmandu

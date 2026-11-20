@@ -1,0 +1,22 @@
+---
+- name: "configure ufw firewall"
+  hosts: automation
+  become: true
+  tasks: 
+    - name: "enable ufw service"
+      service:
+        name: ufw
+        enabled: true
+        state: started
+
+    - name: "ensure ssh service is running "
+      service:
+        name: ssh
+        state: started
+        enabled: true
+
+    - name: "ensure cron service is running"
+      service: 
+        name: cron
+        state: started
+        enabled: true

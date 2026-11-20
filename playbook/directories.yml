@@ -1,0 +1,20 @@
+---
+- name: " linux server automation"
+  hosts: automationserver
+  become: true
+  tasks:
+    - name: "create devops directories"
+      file:
+        path: /opt/devops
+        state: directory
+        group: root
+        owner: root
+        mode: '0755'
+
+    - name: "create backup directories"
+      file:
+        path: /opt/devops/backup
+        state: directory
+        group: root
+        owner: root
+        mode: '0755'

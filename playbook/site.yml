@@ -1,0 +1,7 @@
+---
+- import_playbook: packages.yml
+- import_playbook: services.yml
+- import_playbook: users.yml
+- import_playbook: security.yml
+- import_playbook: directories.yml
+- import_playbook: timezone.yml 

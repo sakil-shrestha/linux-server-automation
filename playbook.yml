@@ -1,90 +1,90 @@
----
-- name: " linux server automation"
-  hosts: automationserver
-  become: true
-  tasks:
+# ---
+# - name: " linux server automation"
+#   hosts: automationserver
+#   become: true
+#   tasks:
 
-   - name: " update packages "
-     ansible.builtin.apt:
-      update_cache: yes
-      cache_valid_time: 3600
+#    - name: " update packages "
+#      ansible.builtin.apt:
+#       update_cache: yes
+#       cache_valid_time: 3600
 
-   - name: "upgrade package"
-     apt:
-        upgrade: dist
+#    - name: "upgrade package"
+#      apt:
+#         upgrade: dist
 
-   - name: "intallation of packages"
-     ansible.builtin.apt:
-        name: 
-          - git
-          - curl
-          - nginx
-          - htop
-          - unzip
-          - wget
+#    - name: "intallation of packages"
+#      ansible.builtin.apt:
+#         name: 
+#           - git
+#           - curl
+#           - nginx
+#           - htop
+#           - unzip
+#           - wget
 
-        state: present
+#         state: present
 
-   - name: "create users and group"
-     user:
-       name: devops   # name of the user 
-       groups: sudo # group of the user
-       append: true # append the user to the group
-      #  password: "#asfwee303!2fsdfscsd" # set the password for the user in hash
-       create_home: true # this will create the home directory for the user
-       shell: /bin/bash # set the shell
-       state: present
+#    - name: "create users and group"
+#      user:
+#        name: devops   # name of the user 
+#        groups: sudo # group of the user to be added
+#        append: true # append the user to the group. Note: append attribute should be mandatory if groups is mentioned.
+#       #  password: "#asfwee303!2fsdfscsd" # set the password for the user in hash
+#        create_home: true # this will create the home directory for the user
+#        shell: /bin/bash # set the shell
+#        state: present
 
 
-  #  "configure ssh access"
-   - name: "install  UFW"
-     apt:
-      name: ufw
-      state: present
+#   #  "configure ssh access"
+#    - name: "install  UFW"
+#      apt:
+#       name: ufw
+#       state: present
 
-   - name: "enable ufw firewall"
-     ufw: 
-      state: enabled
+#    - name: "enable ufw firewall"
+#      ufw: 
+#       state: enabled
 
-   - name: "allow ssh connections"
-     ufw:
-      rule: allow
-      port: '22'
-      proto: tcp
+#    - name: "allow ssh connections"
+#      ufw:
+#       rule: allow
+#       port: '22'
+#       proto: tcp
 
-    # manage directories
-   - name: "create devops directories"
-     file:
-      path: /opt/devops
-      state: directory
-      group: root
-      owner: root 
-      mode: '755'
+#     # manage directories
+#    - name: "create devops directories"
+#      file:
+#       path: /opt/devops
+#       state: directory
+#       group: root
+#       owner: root 
+#       mode: '755'
 
-   - name: "create backup directories"
-     file:
-       path: /opt/devops/backup
-       state: directory
-       group: root
-       owner: root
-       mode: '755'
+#    - name: "create backup directories"
+#      file:
+#        path: /opt/devops/backup
+#        state: directory
+#        group: root
+#        owner: root
+#        mode: '755'
 
-    # manage linux services
-   - name: "ensure ssh service is running"
-     service:
-      name: ssh
-      state: started
-      enabled: true
+#     # manage linux services
+#    - name: "ensure ssh service is running"
+#      service:
+#       name: ssh
+#       state: started
+#       enabled: true
 
-   - name: "ensure cron service is running"
-     service: 
-       name: cron
-       state: started
-       enabled: true
+#    - name: "ensure cron service is running"
+#      service: 
+#        name: cron
+#        state: started
+#        enabled: true
 
-   - name: "configure server timezone"
-     timezone:
-       name: Asia/Kathmandu
+#    - name: "configure server timezone"
+#      timezone:
+#        name: Asia/Kathmandu
       
   
       

@@ -1,0 +1,12 @@
+---
+- name: " linux server automation"
+  hosts: automationserver
+  become: true
+  tasks:
+    - name: " create users and group"
+      user:
+        name: devops
+        groups: sudo
+        create_home: yes
+        shell: /bin/bash
+        state: present
